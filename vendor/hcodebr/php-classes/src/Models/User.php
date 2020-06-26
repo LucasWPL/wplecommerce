@@ -113,7 +113,7 @@
         {
             $sql = new Sql();
 
-            $sql -> query("CALL sp_user_delete(:iduser)",array(
+            $sql -> query("CALL sp_users_delete(:iduser)",array(
                 ":iduser"=>$this->getiduser()
             ));
         }
