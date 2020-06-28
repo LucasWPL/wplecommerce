@@ -2,6 +2,7 @@
 
 use \Wpl\Page;
 use \Wpl\Models\Product;
+use \Wpl\Models\Category;
 
 $app->get('/', function() {
 
@@ -13,5 +14,22 @@ $app->get('/', function() {
 	]);
 	
 });
+
+$app-> get ("/categories/:idcategory", function($idcategory){
+
+	$category = new Category();
+
+	$products = new Product();
+
+	$category -> get((int)$idcategory);
+
+	$page = new Page();
+
+	$page -> setTpl("category", [
+		'category'=> $category->getData(),
+		'products'=> Product::checkList($category-> getProducts())
+	]);
+});
+
 
 ?>
