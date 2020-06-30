@@ -3,6 +3,7 @@
 use \Wpl\Page;
 use \Wpl\Models\Product;
 use \Wpl\Models\Category;
+use \Wpl\Models\Cart;
 
 $app->get('/', function() {
 
@@ -55,9 +56,16 @@ $app-> get ("/product/:desurl", function($desurl){
 		'product'=> $product->getData(),
 		'categories'=>$product->getCategories()	
 	]);
-
-	
 });
+
+$app-> get ("/cart",function(){
+	
+	$page = new Page();
+
+	$cart = Cart::getFromSession();
+	
+	$page-> setTpl("cart");
+})
 
 
 ?>
