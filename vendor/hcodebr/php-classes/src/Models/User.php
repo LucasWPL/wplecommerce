@@ -182,7 +182,7 @@
             ));
         }
 
-        public static function getForgot($email)
+        public static function getForgot($email, $inadmin = true)
         {
             $sql = new Sql();
 
@@ -221,8 +221,13 @@
                     pack("a16", User::SECRET), 0, pack("a16", User::SECRET_IV));
 
                     $code = base64_encode($code);
+                    if($inadmin === true){
+                        $link = "http:www.wplstore.com.br/admin/forgot/reset?code=$code";
+                    }else{
+                        $link = "http:www.wplstore.com.br/forgot/reset?code=$code";
 
-                    $link = "http:www.wplstore.com.br/admin/forgot/reset?code=$code";
+                    }
+                    
                     
                     $mailer = new Mailer($data["desemail"], $data["desperson"], "Recuperacao de senha WPL Store", "forgot", array(
                         "name"=>$data["desperson"],
@@ -341,7 +346,7 @@
 
         public static function checkLoginExists($login)
         {
-                     
+
             $sql = new Sql();
 
             $res = $sql -> select("SELECT * FROM tb_users WHERE deslogin = :deslogin",[

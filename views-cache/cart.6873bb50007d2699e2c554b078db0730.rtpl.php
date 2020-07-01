@@ -80,6 +80,7 @@
 
                                 </tbody>
                             </table>
+                            <?php if( $cart["vlsubtotal"] > 0 ){ ?>
 
                             <div class="cart-collaterals">
 
@@ -96,7 +97,7 @@
                                 </div>
 
                                 <div class="cart_totals ">
-
+                                    
                                     <h2>Resumo da Compra</h2>
 
                                     <table cellspacing="0">
@@ -117,13 +118,16 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                    
                                 </div>
+                                
 
                             </div>
 
                             <div class="pull-right">
                                 <input type="submit" value="Finalizar Compra" name="proceed" class="checkout-button button alt wc-forward">
                             </div>
+                            <?php } ?>
 
                         </form>
 
