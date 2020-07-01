@@ -103,7 +103,8 @@
 
                                             <tr class="shipping">
                                                 <th>Frete</th>
-                                                <td>R$ {function="formatPrice($cart.vlfreight)"} {if="$cart.nrdays > 0"}<small>prazo de {$cart.nrdays} dia(s)</small>{/if}</td>
+                                                <td>{if="$cart.nrdays > 0"} R$ {function="formatPrice($cart.vlfreight)"}<strong> prazo de {$cart.nrdays} dia(s)</strong>{else}CEP não informado.
+                                                {/if}</td>
                                             </tr>
 
                                             <tr class="order-total">
