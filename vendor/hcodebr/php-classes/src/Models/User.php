@@ -9,6 +9,7 @@
         const SESSION = "User";
         const SECRET = "PEDRO_LUCAS_0323";
         const SECRET_IV = "PEDRO_LUCAS_0323_IV";
+        const ERROR = "Errormsg";
 
         public static function getFromSession()
         {
@@ -16,12 +17,13 @@
             $user = new User();
 
             if (isset($_SESSION[User::SESSION]) && (int)$_SESSION[User::SESSION]['iduser'] > 0) {
-               
-                $user-> setData($_SESSION);
 
-            }
+                $user->setData($_SESSION[User::SESSION]);
             
+            }
+
             return $user;
+
         }
 
         public static function checkLogin($inadmin = true)
@@ -55,7 +57,8 @@
         {
             $sql = new Sql();
 
-            $res = $sql-> select("SELECT * FROM tb_users WHERE deslogin = :LOGIN", array(
+            $res = $sql-> select("SELECT * FROM tb_users a INNER JOIN tb_persons b ON a.idperson = b.idperson 
+            WHERE a.deslogin = :LOGIN", array(
                 ":LOGIN" => $login
             ));
 
@@ -66,6 +69,9 @@
             if (password_verify($password, $data["despassword"]) === true){
                 
                 $user = new User();
+
+                $data['desperson'] = utf8_encode($data['desperson']);
+                
                 $user-> setData($data);
 
                 $_SESSION[User::SESSION] = $user-> getData();
@@ -81,10 +87,19 @@
 
         public static function verifyLogin($inadmin = true)
         {
-            if (User::checkLogin($inadmin) === false) {
+            if (!User::checkLogin($inadmin)) {
+               
+                if ($inadmin) {
 
-                header("Location: /admin/login");
-                exit;
+                    header("Location: /admin/login");
+                    exit;
+                    
+                }else{
+                    
+                    header("Location: /login");
+                    exit;
+             
+                }
             
             }
         }
@@ -146,7 +161,7 @@
 
             $res = $sql->select("CALL sp_usersupdate_save(:iduser, :desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)",array(
                 ":iduser"=>$this->getiduser(),
-                ":desperson"=>$this->getdesperson(),
+                ":desperson"=>utf8_decode($this->getdesperson()),
                 ":deslogin"=>$this->getdeslogin(),
                 ":despassword"=>$this->getdespassword(),
                 ":desemail"=>$this->getdesemail(),
@@ -282,6 +297,26 @@
         public static function getPasswordHash($password)
         {
             return password_hash($password, PASSWORD_DEFAULT);
+        }
+
+        public static function setError($msg)
+        {
+            $_SESSION[User::ERROR] = $msg;
+        }
+    
+        public static function getError()
+        {
+            $msg = (isset($_SESSION[User::ERROR]) && $_SESSION[User::ERROR]) ? $_SESSION[User::ERROR] : '';
+    
+            User::clearError();
+    
+            return $msg;
+    
+        }
+    
+        public static function clearError()
+        {
+            $_SESSION[User::ERROR] = NULL;
         }
 
     }
