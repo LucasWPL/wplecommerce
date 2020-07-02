@@ -394,6 +394,55 @@
             
             return $res;
         }
+
+        public static function getPage($page = 1, $itemsPerPage = 10)
+        {
+            $start = ($page - 1) * $itemsPerPage;
+        
+            $sql = new Sql();
+
+            $res = $sql -> select(
+            "SELECT SQL_CALC_FOUND_ROWS *
+            FROM tb_users a 
+            INNER JOIN tb_persons b USING(idperson)
+            ORDER BY b.desperson
+            LIMIT $start, $itemsPerPage;
+            ");
+
+            $resTotal = $sql-> select("SELECT FOUND_ROWS() AS nrtotal;");
+
+            return [
+                'data'=> $res,
+                'total'=> (int)$resTotal[0]['nrtotal'],
+                'pages'=> ceil($resTotal[0]['nrtotal'] / $itemsPerPage)
+            ];
+        }
+
+        public static function getPageSearch($search, $page = 1, $itemsPerPage = 10)
+        {
+            $start = ($page - 1) * $itemsPerPage;
+        
+            $sql = new Sql();
+
+            $res = $sql -> select(
+            "SELECT SQL_CALC_FOUND_ROWS *
+            FROM tb_users a 
+            INNER JOIN tb_persons b USING(idperson)
+            WHERE b.desperson LIKE :search OR b.desemail = :search OR a.deslogin LIKE :search
+            ORDER BY b.desperson
+            LIMIT $start, $itemsPerPage;
+            ",[
+                ':search'=> '%'.$search.'%'
+            ]); 
+
+            $resTotal = $sql-> select("SELECT FOUND_ROWS() AS nrtotal;");
+
+            return [
+                'data'=> $res,
+                'total'=> (int)$resTotal[0]['nrtotal'],
+                'pages'=> ceil($resTotal[0]['nrtotal'] / $itemsPerPage)
+            ];
+        }
         
     }
 
