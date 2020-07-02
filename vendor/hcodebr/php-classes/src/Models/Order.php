@@ -41,8 +41,6 @@ class Order extends Model
             ':idorder'=> $idorder
         ]);
         
-        // var_dump($res);
-        // exit;
         if(count($res) > 0){
             $this-> setData($res[0]);
         }
