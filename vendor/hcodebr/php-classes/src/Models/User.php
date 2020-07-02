@@ -160,18 +160,18 @@
         public function update()
         {
             $sql = new Sql();
-
-            $res = $sql->select("CALL sp_usersupdate_save(:iduser, :desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)",array(
+            $results = $sql->select("CALL sp_usersupdate_save(:iduser, :desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin);", array(
                 ":iduser"=>$this->getiduser(),
-                ":desperson"=>utf8_decode($this->getdesperson()),
+                ":desperson"=>utf8_encode($this->getdesperson()),
                 ":deslogin"=>$this->getdeslogin(),
                 ":despassword"=>$this->getdespassword(),
                 ":desemail"=>$this->getdesemail(),
                 ":nrphone"=>$this->getnrphone(),
                 ":inadmin"=>$this->getinadmin()
             ));
+            $this->setData($results[0]);
 
-            $this-> setData($res[0]);
+            $_SESSION[User::SESSION] = $this->getData();
         }
 
         public function delete()
