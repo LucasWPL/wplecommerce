@@ -48,18 +48,19 @@ $app-> get ("/categories/:idcategory", function($idcategory){
 	]);
 });
 
-$app-> get ("/product/:desurl", function($desurl){
-	
+$app->get("/products/:desurl", function($desurl){
+
 	$product = new Product();
 
-	$product-> getFromURL($desurl);
+	$product->getFromURL($desurl);
 
 	$page = new Page();
-	
-	$page -> setTpl("product-detail", [
-		'product'=> $product->getData(),
-		'categories'=>$product->getCategories()	
+
+	$page->setTpl("product-detail", [
+		'product'=>$product->getData(),
+		'categories'=>$product->getCategories()
 	]);
+
 });
 
 $app-> get ("/cart", function(){
@@ -257,7 +258,18 @@ $app-> post("/checkout", function(){
 	
 	// var_dump($order->getData());
 	// exit;
-	header("Location: /order/".$order->getidorder()."/paypal");
+	switch ((int)$_POST['payment-method']) {
+
+		case 1:
+		header("Location: /order/".$order->getidorder());
+		break;
+
+		case 2:
+		header("Location: /order/".$order->getidorder()."/paypal");
+		break;
+
+	}
+
 	exit;
 	
 });

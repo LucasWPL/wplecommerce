@@ -3,10 +3,10 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      Anything you want
+      
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2020 <a href="#">WPL Store</a>.</strong> Todos os direitos reservados.
   </footer>
 
   <!-- Control Sidebar -->
@@ -27,28 +27,28 @@
               <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
               <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+                <h4 class="control-sidebar-subheading">Aniverário de Pedro Lucas</h4>
 
-                <p>Will be 23 on April 24th</p>
+                <p>23 de Março</p>
               </div>
             </a>
           </li>
         </ul>
         <!-- /.control-sidebar-menu -->
 
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
+        <h3 class="control-sidebar-heading">Progresso</h3>
         <ul class="control-sidebar-menu">
           <li>
             <a href="javascript:;">
               <h4 class="control-sidebar-subheading">
-                Custom Template Design
+                Customizando o template
                 <span class="pull-right-container">
-                  <span class="label label-danger pull-right">70%</span>
+                  <span class="label label-danger pull-right">90%</span>
                 </span>
               </h4>
 
               <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                <div class="progress-bar progress-bar-danger" style="width: 90%"></div>
               </div>
             </a>
           </li>

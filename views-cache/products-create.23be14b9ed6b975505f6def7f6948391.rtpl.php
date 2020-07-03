@@ -23,7 +23,7 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" action="/admin/products/create" method="post">
+        <form role="form" action="/admin/products/create" method="post" enctype="multipart/form-data">
           <div class="box-body">
             <div class="form-group">
               <label for="desproduct">Nome da produto</label>
@@ -35,23 +35,27 @@
             </div>
             <div class="form-group">
               <label for="vlwidth">Largura</label>
-              <input type="number" class="form-control" id="vlwidth" name="vlwidth" step="0.01" placeholder="0.00">
+              <input type="number" class="form-control" id="vlwidth" name="vlwidth" step="0.01" placeholder="0.00" value="14.1">
             </div>
             <div class="form-group">
               <label for="vlheight">Altura</label>
-              <input type="number" class="form-control" id="vlheight" name="vlheight" step="0.01" placeholder="0.00">
+              <input type="number" class="form-control" id="vlheight" name="vlheight" step="0.01" placeholder="0.00" value="7.5">
             </div>
             <div class="form-group">
               <label for="vllength">Comprimento</label>
-              <input type="number" class="form-control" id="vllength" name="vllength" step="0.01" placeholder="0.00">
+              <input type="number" class="form-control" id="vllength" name="vllength" step="0.01" placeholder="0.00" value="0.9">
             </div>
             <div class="form-group">
               <label for="vlweight">Peso</label>
-              <input type="number" class="form-control" id="vlweight" name="vlweight" step="0.01" placeholder="0.00">
+              <input type="number" class="form-control" id="vlweight" name="vlweight" step="0.01" placeholder="0.00" value="0.3">
             </div>
             <div class="form-group">
               <label for="vlweight">Url</label>
               <input type="text" class="form-control" id="desurl" name="desurl" step="0.01" placeholder="www">
+            </div>
+            <div class="form-group">
+              <label for="file">Foto</label>
+              <input type="file" class="form-control" id="file" name="file" value="padrao" >
             </div>
           </div>
           <!-- /.box-body -->

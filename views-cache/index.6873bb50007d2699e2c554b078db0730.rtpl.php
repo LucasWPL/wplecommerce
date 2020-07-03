@@ -3,39 +3,48 @@
     <div class="block-slider block-slider4">
         <ul class="" id="bxslider-home4">
             <li>
-                <img src="/res/site/img/h4-slide.png" alt="Slide">
+                <img style="max-width:400px;
+                max-height:400px;
+                width: auto;
+                height: auto;"  src="/res/site/img/iphone11-slide.jpg" alt="Slide">
                 <div class="caption-group">
                     <h2 class="caption title">
-                        iPhone <span class="primary">6 <strong>Plus</strong></span>
+                        iPhone <span class="primary">11 <strong>Pro Max</strong></span>
                     </h2>
-                    <h4 class="caption subtitle">Dual SIM</h4>
+                    <h4 class="caption subtitle">528 GB</h4>
                     <a class="caption button-radius" href="#"><span class="icon"></span>Comprar</a>
                 </div>
             </li>
-            <li><img src="/res/site/img/h4-slide2.png" alt="Slide">
+            <li><img style="max-width:400px;
+                max-height:400px;
+                width: auto;
+                height: auto;" src="/res/site/img/note-9-xiaomi.png" alt="Slide">
                 <div class="caption-group">
                     <h2 class="caption title">
-                        by one, get one <span class="primary">50% <strong>off</strong></span>
+                        Xiaomi <span class="primary">Note <strong>PRO</strong></span>
                     </h2>
-                    <h4 class="caption subtitle">school supplies & backpacks.*</h4>
+                    <h4 class="caption subtitle">128 GB <strong> 6 RAM </strong></h4>
                     <a class="caption button-radius" href="#"><span class="icon"></span>Comprar</a>
                 </div>
             </li>
-            <li><img src="/res/site/img/h4-slide3.png" alt="Slide">
+            <li><img src="/res/site/img/slidetabs6.jpg" alt="Slide">
                 <div class="caption-group">
                     <h2 class="caption title">
-                        Apple <span class="primary">Store <strong>Ipod</strong></span>
+                        Samsung <span class="primary">Tab <strong>S6</strong></span>
                     </h2>
-                    <h4 class="caption subtitle">Select Item</h4>
+                    <h4 class="caption subtitle">128 GB <strong>10.4'</strong></h4>
                     <a class="caption button-radius" href="#"><span class="icon"></span>Comprar</a>
                 </div>
             </li>
-            <li><img src="/res/site/img/h4-slide4.png" alt="Slide">
+            <li><img style="max-width:700px;
+                max-height:700px;
+                width: auto;
+                height: auto;" src="/res/site/img/echoalexa.jpg" alt="Slide">
                 <div class="caption-group">
                   <h2 class="caption title">
-                        Apple <span class="primary">Store <strong>Ipod</strong></span>
+                        Echo <span class="primary">Dot <strong>3° Geração</strong></span>
                     </h2>
-                    <h4 class="caption subtitle">& Phone</h4>
+                    <h4 class="caption subtitle">Smart speaker com alexa</h4>
                     <a class="caption button-radius" href="#"><span class="icon"></span>Comprar</a>
                 </div>
             </li>
@@ -88,7 +97,10 @@
                     <?php $counter1=-1;  if( isset($products) && ( is_array($products) || $products instanceof Traversable ) && sizeof($products) ) foreach( $products as $key1 => $value1 ){ $counter1++; ?>
                     <div class="single-product">
                         <div class="product-f-image">
-                            <img src="<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="">
+                            <img style="max-width:270px;
+                            max-height:270px;
+                            width: auto;
+                            height: auto;" src="<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="">
                             <div class="product-hover">
                                 <a href="/cart/<?php echo htmlspecialchars( $value1["idproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/add" class="add-to-cart-link"><i class="fa fa-sjopping-cart"></i> Comprar</a>
                                 <a href="/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="view-details-link"><i class="fa fa-link"></i> Ver detalhes</a>

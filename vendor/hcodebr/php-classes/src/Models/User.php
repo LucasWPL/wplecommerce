@@ -171,7 +171,7 @@
             ));
             $this->setData($results[0]);
 
-            $_SESSION[User::SESSION] = $this->getData();
+            //$_SESSION[User::SESSION] = $this->getData();
         }
 
         public function delete()

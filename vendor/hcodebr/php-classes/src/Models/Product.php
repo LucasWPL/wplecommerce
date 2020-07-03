@@ -65,7 +65,11 @@ class Product extends Model{
     {
         $sql = new Sql();
 
-        $sql-> query("DELETE FROM tb_products WHERE idproduct = :idproduct",[
+        $sql-> query(
+            "SET foreign_key_checks = 0;
+            DELETE FROM tb_products 
+            WHERE idproduct = :idproduct;
+            SET foreign_key_checks = 1;",[
             ":idproduct"=>$this-> getidproduct()
         ]);
     }
@@ -101,7 +105,7 @@ class Product extends Model{
 
     public function setPhoto($file)
     {
-
+        
         $extension = explode('.', $file['name']);
         $extension = end($extension);
 
