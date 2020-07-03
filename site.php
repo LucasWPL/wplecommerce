@@ -192,6 +192,12 @@ $app-> post("/checkout", function(){
 		exit;
 	}
 
+	if (!isset($_POST['desnumber']) || $_POST['desnumber'] === '') {
+		Address::setMsgError("Informe o número.");
+		header('Location: /checkout');
+		exit;
+	}
+
 	if (!isset($_POST['desaddress']) || $_POST['desaddress'] === '') {
 		Address::setMsgError("Informe o endereço.");
 		header('Location: /checkout');
@@ -248,12 +254,36 @@ $app-> post("/checkout", function(){
 	]);
 
 	$order-> save();	
-
+	
 	// var_dump($order->getData());
 	// exit;
-
-	header("Location: /order/".$order->getidorder());
+	header("Location: /order/".$order->getidorder()."/paypal");
 	exit;
+	
+});
+
+$app->get("/order/:idorder/paypal", function($idorder){
+	
+	User::verifyLogin(false);
+
+	$order = new Order();
+
+	$order->get((int)$idorder);
+
+	$cart = $order->getCart();
+
+	$page = new Page([
+		'header'=>false,
+		'footer'=>false
+	]);
+
+	$page->setTpl("payment-paypal", [
+		'order'=>$order->getData(),
+		'cart'=>$cart->getData(),
+		'products'=>$cart->getProducts()
+	]);
+
+
 });
 
 

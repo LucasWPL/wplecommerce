@@ -17,7 +17,7 @@ use \Wpl\Models\Cart;
 
     }
 
-    function formatPrice(float $vlprice)
+    function formatPrice( $vlprice)
     {
         
         if (!$vlprice > 0) $vlprice = 0;
